@@ -1,0 +1,28 @@
+{
+  "name": "dhtspider-db-populate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "prettier": "prettier --write --no-semi --single-quote *.js",
+    "up": "docker-compose up --build",
+    "upd": "docker-compose up -d --build",
+    "pullup": "docker-compose pull && docker-compose up --build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derekchuank/dhtspider-db-populate.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/derekchuank/dhtspider-db-populate/issues"
+  },
+  "homepage": "https://github.com/derekchuank/dhtspider-db-populate#readme",
+  "dependencies": {
+    "mongodb": "^3.5.2",
+    "torrent-stream": "^1.2.0"
+  }
+}

@@ -1,0 +1,28 @@
+version: '3'
+services:
+  app:
+    build: .
+    depends_on:
+      - dhtspider-db
+    command: ["./wait-for-it.sh", "mongo:27017", "--", "npm", "start"]
+  dhtspider-db:
+    image: derekchuank/dhtspider-db
+    depends_on:
+      - mongo
+      - dhtspider
+    volumes:
+      - /var/dhtspider:/var/dhtspider
+    command: ["./wait-for-it.sh", "mongo:27017", "--", "npm", "start"]
+  dhtspider:
+    image: derekchuank/dhtspider
+    ports:
+      - "6339:6339/udp"
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - /var/dhtspider:/var/dhtspider
+  mongo:
+    image: mongo
+    restart: on-failure
+    volumes:
+      - /var/mongo:/data/db
